@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر LD - الشدات</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CH4R9H0P5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9CH4R9H0P5');
+    </script>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #87CEEB, #E0F6FF); /* خلفية بهية (أزرق سماوي إلى أبيض ناعم) */
-            color: #333; /* نص داكن للتباين */
+            background: linear-gradient(135deg, #87CEEB, #E0F6FF);
+            color: #333;
             margin: 0;
             padding: 0;
             direction: rtl;
@@ -19,52 +33,50 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-            background: linear-gradient(90deg, #FF7F50, #FFA07A); /* برتقالي بهيج */
-            border-bottom: 2px solid #FFD700; /* خط ذهبي */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            background: linear-gradient(90deg, #FF7F50, #FFA07A);
+            border-bottom: 2px solid #FFD700;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         .header h1 {
             margin: 0;
             font-size: 24px;
-            color: #FFD700; /* ذهبي */
+            color: #FFD700;
             font-weight: bold;
         }
         .header img {
             width: 80px;
             height: auto;
-            /* إضافة تحقق من الشعار */
-            display: block; /* للتأكد من عدم اختفاء الصورة */
+            display: block;
         }
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* تقليل الحجم لملء البطاقات */
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 20px;
-            padding: 30px;
-            max-width: 1300px;
+            padding: 20px;
+            max-width: 100%;
             margin: 0 auto;
         }
         .card {
-            background-color: #FFFFFF; /* خلفية بيضاء للبطاقات */
+            background-color: #FFFFFF;
             border-radius: 15px;
             padding: 15px;
             text-align: center;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* ظل خفيف واقعي */
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
-            aspect-ratio: 1; /* مربع */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border: 1px solid #FFD700; /* إطار ذهبي */
+            border: 1px solid #FFD700;
         }
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.2);
         }
         .card img {
-            width: 80px; /* تقليل الحجم لملء البطاقة */
+            width: 80px;
             height: 80px;
             object-fit: contain;
-            margin-bottom: 10px;
+            margin: 0 auto 10px;
         }
         .card .details {
             flex-grow: 1;
@@ -73,13 +85,13 @@
             justify-content: center;
         }
         .card .price {
-            color: #FF4500; /* برتقالي مشمس */
+            color: #FF4500;
             font-size: 18px;
             margin: 5px 0;
             font-weight: bold;
         }
         .card .order-btn {
-            background-color: #32CD32; /* أخضر مشمس */
+            background-color: #32CD32;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -90,13 +102,13 @@
             transition: background-color 0.3s, transform 0.3s;
         }
         .card .order-btn:hover {
-            background-color: #228B22; /* أخضر داكن */
+            background-color: #228B22;
             transform: scale(1.05);
         }
         .contact {
             text-align: center;
             padding: 20px;
-            background: linear-gradient(90deg, #FFA07A, #FF7F50); /* تدرج برتقالي */
+            background: linear-gradient(90deg, #FFA07A, #FF7F50);
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         }
         .contact a {
