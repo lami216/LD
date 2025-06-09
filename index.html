@@ -6,81 +6,108 @@
     <title>متجر LD - الشدات</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0f3460;
             color: #fff;
             margin: 0;
             padding: 0;
             direction: rtl;
+            overflow-x: hidden;
         }
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            background-color: #16213e;
-            border-bottom: 1px solid #d4af37;
+            padding: 15px 30px;
+            background: linear-gradient(90deg, #16213e, #1e2a5e);
+            border-bottom: 2px solid #d4af37;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         .header h1 {
             margin: 0;
-            font-size: 20px;
+            font-size: 24px;
             color: #d4af37;
+            font-weight: bold;
         }
         .header img {
-            width: 50px;
+            width: 70px;
             height: auto;
         }
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* تحسين لعرض أكثر بطاقات بجانب بعض */
+            gap: 25px;
+            padding: 30px;
+            max-width: 1300px; /* زيادة العرض القصوى لاحتواء المزيد من البطاقات */
+            margin: 0 auto;
         }
         .card {
             background-color: #1e2a5e;
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 15px;
+            padding: 20px;
             text-align: center;
             position: relative;
-            box-shadow: 10px -5px 15px rgba(212, 175, 55, 0.3);
-            transition: transform 0.2s;
+            box-shadow: 10px -5px 15px rgba(212, 175, 55, 0.3), 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            aspect-ratio: 1; /* جعل البطاقات مربعة */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 15px -8px 20px rgba(212, 175, 55, 0.4), 0 0 15px rgba(0, 0, 0, 0.3);
         }
         .card img {
-            width: 60px;
-            height: auto;
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .card .details {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .card .price {
             color: #ffcc00;
-            font-size: 18px;
+            font-size: 20px;
+            margin: 5px 0;
         }
         .card .order-btn {
             background-color: #ff8c00;
             color: #fff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 12px 25px;
+            border-radius: 10px;
             cursor: pointer;
-            margin-top: 15px;
-            font-size: 16px;
-            width: 80%;
-            transition: background-color 0.3s, transform 0.2s;
+            font-size: 18px;
+            width: 90%;
+            transition: background-color 0.3s, transform 0.3s;
         }
         .card .order-btn:hover {
             background-color: #e67e22;
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         .contact {
             text-align: center;
             padding: 20px;
-            background-color: #1e2a5e;
+            background: linear-gradient(90deg, #1e2a5e, #16213e);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
         }
         .contact a {
             color: #ffcc00;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: 1px solid #ffcc00;
+            border-radius: 5px;
+            transition: color 0.3s, background-color 0.3s;
+        }
+        .contact a:hover {
+            color: #fff;
+            background-color: #ffcc00;
         }
     </style>
 </head>
@@ -116,7 +143,6 @@
         ];
 
         const cardsContainer = document.getElementById("cardsContainer");
-        const whatsappNumber = "41380130"; // استبدل برقمك الفعلي
 
         products.forEach(product => {
             let imageUrl;
@@ -139,8 +165,10 @@
             card.className = "card";
             card.innerHTML = `
                 <img src="${imageUrl}" alt="UC">
-                <p>${product.uc}</p>
-                <p class="price">${product.price} MRT</p>
+                <div class="details">
+                    <p>الكمية: ${product.uc}</p>
+                    <p class="price">السعر: ${product.price} MRT</p>
+                </div>
                 <button class="order-btn" onclick="orderNow('${product.uc}', '${product.price}')">شراء</button>
             `;
             cardsContainer.appendChild(card);
@@ -148,7 +176,7 @@
 
         function orderNow(uc, price) {
             const message = encodeURIComponent(`أرغب في طلب ${uc} بسعر ${price} MRT من متجر LD.`);
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+            const whatsappUrl = `https://wa.me/41380130?text=${message}`;
             window.open(whatsappUrl, '_blank');
         }
     </script>
